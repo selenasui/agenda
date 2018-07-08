@@ -15,6 +15,8 @@ class ListTasksTableViewController: UITableViewController {
             tableView.reloadData()
         }
     }
+    
+    var completedTasks = [Task]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +42,22 @@ class ListTasksTableViewController: UITableViewController {
             cell.taskDescriptionLabel.text = contentLines[0]
         } else {
             cell.taskDescriptionLabel.text = content
+        }
+        
+        cell.taskMarkAsCompleteButton.layer.borderWidth = 1.5
+        cell.taskMarkAsCompleteButton.layer.borderColor = UIColor.init(red: 194/255, green: 151/255, blue: 255/255, alpha: 1).cgColor
+        cell.taskMarkAsCompleteButton.clipsToBounds = true
+        
+        cell.onButtonTapped = { (cell) in
+            guard let indexPath = tableView.indexPath(for: cell) else { return }
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "listTasksTableViewCell", for: indexPath) as! ListTasksTableViewCell
+            
+            let taskToRemove = self.tasks[indexPath.row]
+            
+            CoreDataHelper.deleteNote(task: taskToRemove)
+            
+            self.tasks = CoreDataHelper.retrieveTasks()
         }
         
         return cell
@@ -77,9 +95,6 @@ class ListTasksTableViewController: UITableViewController {
     
     @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {
         tasks = CoreDataHelper.retrieveTasks()
-    }
-
-    @IBAction func taskMarkAsCompleteButtonTapped(_ sender: Any) {
     }
     
 }

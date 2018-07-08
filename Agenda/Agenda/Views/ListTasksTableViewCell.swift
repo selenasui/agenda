@@ -16,5 +16,12 @@ class ListTasksTableViewCell: UITableViewCell {
     @IBOutlet weak var taskDescriptionLabel: UILabel!
     @IBOutlet weak var taskMarkAsCompleteButton: UIButton!
     
+    var onButtonTapped: ((UITableViewCell) -> Void)? = nil
+    
+    @IBAction func onCheckBox(_ sender: Any) {
+        taskMarkAsCompleteButton.isSelected = !taskMarkAsCompleteButton.isSelected
+        onButtonTapped?(self)
+    }
+    
 }
 
