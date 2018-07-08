@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8F5D17F220EFE2DC00E5B6A3 /* ListTasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5D17F120EFE2DC00E5B6A3 /* ListTasksTableViewCell.swift */; };
-		8F5D17F620EFEE9B00E5B6A3 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5D17F520EFEE9B00E5B6A3 /* Task.swift */; };
+		8F5D181B20F297A200E5B6A3 /* DisplayTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5D181A20F297A200E5B6A3 /* DisplayTaskViewController.swift */; };
 		8FC410D820EFD19400A4CAE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC410D720EFD19400A4CAE9 /* AppDelegate.swift */; };
 		8FC410DA20EFD19500A4CAE9 /* ListTasksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC410D920EFD19500A4CAE9 /* ListTasksTableViewController.swift */; };
 		8FC410DD20EFD19500A4CAE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FC410DB20EFD19500A4CAE9 /* Main.storyboard */; };
@@ -21,7 +21,7 @@
 
 /* Begin PBXFileReference section */
 		8F5D17F120EFE2DC00E5B6A3 /* ListTasksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTasksTableViewCell.swift; sourceTree = "<group>"; };
-		8F5D17F520EFEE9B00E5B6A3 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Task.swift; path = Agenda/Views/Task.swift; sourceTree = SOURCE_ROOT; };
+		8F5D181A20F297A200E5B6A3 /* DisplayTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayTaskViewController.swift; sourceTree = "<group>"; };
 		8FC410D420EFD19400A4CAE9 /* Agenda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Agenda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FC410D720EFD19400A4CAE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8FC410D920EFD19500A4CAE9 /* ListTasksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTasksTableViewController.swift; sourceTree = "<group>"; };
@@ -56,7 +56,6 @@
 		8F5D17F420EFEE6400E5B6A3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8F5D17F520EFEE9B00E5B6A3 /* Task.swift */,
 			);
 			name = Models;
 			path = "New Group";
@@ -100,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				8FC410D920EFD19500A4CAE9 /* ListTasksTableViewController.swift */,
+				8F5D181A20F297A200E5B6A3 /* DisplayTaskViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -196,8 +196,8 @@
 				8FC410F120EFD30700A4CAE9 /* CoreDataHelper.swift in Sources */,
 				8FC410D820EFD19400A4CAE9 /* AppDelegate.swift in Sources */,
 				8F5D17F220EFE2DC00E5B6A3 /* ListTasksTableViewCell.swift in Sources */,
-				8F5D17F620EFEE9B00E5B6A3 /* Task.swift in Sources */,
 				8FC410F420EFD32300A4CAE9 /* Date+convertToString.swift in Sources */,
+				8F5D181B20F297A200E5B6A3 /* DisplayTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

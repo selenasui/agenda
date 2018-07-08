@@ -10,12 +10,16 @@ import UIKit
 
 class ListTasksTableViewController: UITableViewController {
     
-    var tasks = [
-        Task(title: "finish todo app", timestamp: Date(), description: "finish it"),
-        Task(title: "figure this out", timestamp: Date(), description: "lets do it")]
+    var tasks = [Task]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tasks = CoreDataHelper.retrieveTasks()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -27,11 +31,27 @@ class ListTasksTableViewController: UITableViewController {
         
         let task = tasks[indexPath.row]
         
-        cell.taskTitleLabel?.text = task.title
-        cell.taskTimestampLabel?.text = task.timestamp.convertToString()
-        cell.taskDescriptionLabel?.text = task.description
+        cell.taskTitleLabel.text = task.title
+        cell.taskTimestampLabel.text = task.timestamp?.convertToString() ?? "unknown"
+        
+        let content = task.content
+        let contentLines = content?.components(separatedBy: "\n")
+        if let contentLines = contentLines {
+            cell.taskDescriptionLabel.text = contentLines[0]
+        } else {
+            cell.taskDescriptionLabel.text = content
+        }
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let taskToDelete = tasks[indexPath.row]
+            CoreDataHelper.deleteNote(task: taskToDelete)
+            
+            tasks = CoreDataHelper.retrieveTasks()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -39,9 +59,24 @@ class ListTasksTableViewController: UITableViewController {
             return
         }
         
-        if identifier == "displayTask" {
-            print("display task")
+        switch identifier {
+        case "displayTask":
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            
+            let task = tasks[indexPath.row]
+            let destination = segue.destination as! DisplayTaskViewController
+            destination.task = task
+            
+        case "addTask":
+            print("create task bar button item tapped")
+            
+        default:
+            print("Unexpected segue identifier")
         }
+    }
+    
+    @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {
+        tasks = CoreDataHelper.retrieveTasks()
     }
 
     @IBAction func taskMarkAsCompleteButtonTapped(_ sender: Any) {

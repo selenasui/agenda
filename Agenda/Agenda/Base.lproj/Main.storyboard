@@ -93,17 +93,21 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Todo List" id="ncu-ae-8TJ">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ITD-aQ-vDS"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ITD-aQ-vDS">
+                            <connections>
+                                <segue destination="Lgg-Ag-nHD" kind="show" identifier="addTask" id="YJf-w2-qZZ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Js4-eS-byd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="708" y="39.130434782608695"/>
         </scene>
-        <!--Task-->
+        <!--Edit-->
         <scene sceneID="9M2-TS-ngN">
             <objects>
-                <viewController id="Lgg-Ag-nHD" sceneMemberID="viewController">
+                <viewController id="Lgg-Ag-nHD" customClass="DisplayTaskViewController" customModule="Agenda" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2dG-di-Fqg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -134,9 +138,25 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fIo-Ct-QJD"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Task" id="kro-SD-wFF"/>
+                    <navigationItem key="navigationItem" title="Edit" id="kro-SD-wFF">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="IrM-l3-uHC">
+                            <connections>
+                                <segue destination="tpG-bQ-VE0" kind="unwind" identifier="cancel" unwindAction="unwindWithSegue:" id="MfW-ec-89w"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="3Js-9n-wB0">
+                            <connections>
+                                <segue destination="tpG-bQ-VE0" kind="unwind" identifier="save" unwindAction="unwindWithSegue:" id="fNY-Wu-UiP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="contentTextView" destination="CcW-lT-BrD" id="o94-3l-vOl"/>
+                        <outlet property="titleTextField" destination="cah-aU-fUX" id="ztk-FZ-Fgp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EpU-va-V20" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="tpG-bQ-VE0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1623.2" y="38.23088455772114"/>
         </scene>
@@ -159,4 +179,7 @@
             <point key="canvasLocation" x="-231.19999999999999" y="39.130434782608695"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="YJf-w2-qZZ"/>
+    </inferredMetricsTieBreakers>
 </document>
